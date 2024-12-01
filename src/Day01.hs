@@ -1,20 +1,26 @@
+{-# HLINT ignore "Use bimap" #-}
 {-# OPTIONS_GHC -Wno-incomplete-uni-patterns #-}
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# OPTIONS_GHC -Wno-unused-top-binds #-}
 
-module Day01 (sumDst, getPairs, getSortedLists) where
+module Day01 (sumDst, sumSimScore, getSortedPairs, getLists) where
 
-import Data.List
+import Data.List (sort)
 
 testInput :: String
-testInput = "14   12\n4   3\n2   2\n1   2\n7   9\n0   5"
+testInput = "3   4\n4   3\n2   5\n1   3\n3   9\n3   3"
 
-getSortedLists :: String -> ([Integer], [Integer])
-getSortedLists s = (sort l, sort r)
- where
-  (l, r) = unzip $ map ((\[a, b] -> (read a, read b)) . words) . lines $ s
+getLists :: String -> ([Integer], [Integer])
+getLists s = unzip $ map ((\[a, b] -> (read a, read b)) . words) . lines $ s
 
-getPairs :: ([Integer], [Integer]) -> [(Integer, Integer)]
-getPairs = uncurry zip
+getSortedPairs :: ([Integer], [Integer]) -> [(Integer, Integer)]
+getSortedPairs = uncurry zip . (\(l, r) -> (sort l, sort r))
+
+simScore :: Integer -> [Integer] -> Integer
+simScore n = sum . filter (n ==)
+
+sumSimScore :: ([Integer], [Integer]) -> Integer
+sumSimScore (l, r) = (sum . map (`simScore` r)) l
 
 sumDst :: [(Integer, Integer)] -> Integer
 sumDst = foldl (\s (a, b) -> s + abs (a - b)) 0
