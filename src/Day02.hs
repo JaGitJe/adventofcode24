@@ -1,7 +1,4 @@
-module Day02 (getReports, countSafe) where
-
-testInput :: String
-testInput = "7 6 4 2 1\n1 2 7 8 9\n9 7 6 2 1\n1 3 2 4 5\n8 6 4 4 1\n1 3 6 7 9"
+module Day02 (getReports, countSafe, safe, damp) where
 
 getReports :: String -> [[Int]]
 getReports = map (map read . words) . lines
@@ -20,5 +17,13 @@ safe (x : y : xs)
     (f prev x' && adj prev x') && chg f x' xs'
 safe _ = False
 
-countSafe :: [[Int]] -> Int
-countSafe = length . filter safe
+damp :: [Int] -> Bool
+damp xs
+  | safe xs = True
+  | otherwise = go [] xs
+ where
+  go _ [] = False
+  go acc (y : ys) = safe (acc ++ ys) || go (acc ++ [y]) ys
+
+countSafe :: ([Int] -> Bool) -> [[Int]] -> Int
+countSafe f = length . filter f

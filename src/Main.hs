@@ -1,7 +1,7 @@
 module Main where
 
 import Day01
-import Day02 (countSafe, getReports)
+import Day02 (countSafe, damp, getReports, safe)
 
 runDay :: (String, String -> Int) -> IO ()
 runDay (path, f) = do
@@ -16,7 +16,10 @@ d01p2 :: (String, String -> Int)
 d01p2 = ("data/d01p2.txt", sumSimScore . getLists)
 
 d02p1 :: (String, String -> Int)
-d02p1 = ("data/d02p1.txt", countSafe . getReports)
+d02p1 = ("data/d02p1.txt", countSafe safe . getReports)
+
+d02p2 :: (String, String -> Int)
+d02p2 = ("data/d02p1.txt", countSafe damp . getReports)
 
 main :: IO ()
 main = putStrLn "Hello, Haskell!"
