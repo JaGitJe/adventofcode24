@@ -3,8 +3,6 @@ name:               adventofcode24
 version:            1.0.0.0
 -- synopsis:
 -- description:
-license:            GPL-3.0-only
-license-file:       LICENSE
 author:             Jan
 maintainer:         cmij2f38aj@mailbox.org
 -- copyright:
@@ -20,6 +18,7 @@ executable adventofcode24
     import:           warnings
     main-is:          Main.hs
     other-modules:    Day01
+                      Day02
     -- other-extensions:
     build-depends:    base ^>=4.17.2.1
     hs-source-dirs:   src
