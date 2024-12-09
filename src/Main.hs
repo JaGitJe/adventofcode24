@@ -3,6 +3,7 @@ module Main where
 import Day01
 import Day02
 import Day03
+import Day05
 
 runDay :: (String, String -> Int) -> IO ()
 runDay (path, f) = do
@@ -24,6 +25,9 @@ d02p2 = ("data/d02p1.txt", countSafe damp . getReports)
 
 d03p1 :: (String, String -> Int)
 d03p1 = ("data/d03p1.txt", mul . parseMem)
+
+d05p1 :: (String, String -> Int)
+d05p1 = ("data/d05p1.txt", sumMiddlePages)
 
 main :: IO ()
 main = putStrLn "Hello, Haskell!"
