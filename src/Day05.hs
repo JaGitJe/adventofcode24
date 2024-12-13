@@ -48,7 +48,7 @@ filterUpdates rs us = filter checkUpdateOrd us
     Just laterPages -> b `elem` laterPages
     Nothing -> False
 
-sumMiddlePages :: String -> Int
-sumMiddlePages s =
+sumMidPages :: String -> Int
+sumMidPages s =
   let (rs, us) = getManual s
    in sum $ map (\up -> up !! (length up `div` 2)) $ filterUpdates rs us
