@@ -4,6 +4,7 @@ import Day01
 import Day02
 import Day03
 import Day05
+import Day06
 import Day10
 
 runDay :: (String, String -> Int) -> IO ()
@@ -29,6 +30,9 @@ d03p1 = ("data/d03p1.txt", mul . parseMem)
 
 d05p1 :: (String, String -> Int)
 d05p1 = ("data/d05p1.txt", sumMidPages)
+
+d06p1 :: (String, String -> Int)
+d06p1 = ("data/d06p1.txt", patrolPositions . getFloorplan)
 
 d10p1 :: (String, String -> Int)
 d10p1 = ("data/d10p1.txt", countTrails . getMap)
