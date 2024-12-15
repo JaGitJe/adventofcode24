@@ -1,4 +1,4 @@
-module Day10 where
+module Day10 (countTrails, getMap) where
 
 import Data.List (nub)
 import Data.Maybe (isJust)

@@ -1,7 +1,3 @@
-{-# HLINT ignore "Use bimap" #-}
-{-# OPTIONS_GHC -Wno-incomplete-uni-patterns #-}
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-
 module Day01 (sumDst, sumSimScore, getSortedPairs, getLists) where
 
 import Data.List (sort)

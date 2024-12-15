@@ -1,4 +1,4 @@
-module Day05 where
+module Day05 (wspace, sumMidPages) where
 
 import Data.Map.Strict (Map, fromListWith, (!?))
 import Text.Parsec
